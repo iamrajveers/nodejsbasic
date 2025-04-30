@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8  ">
+    <%- include('partials/header') %>
+  <div class="max-w-6xl mx-auto bg-white shadow rounded p-6 mt-12">
+    <h1 class="text-2xl font-bold mb-4">Contact List</h1>
+
+    <div class="text-right mb-4">
+      <a href="/add-contact" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add New Contact</a>
+    </div>
+
+    <table class="table-auto w-full border-collapse border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border p-2">#</th>
+          <th class="border p-2">First Name</th>
+          <th class="border p-2">Last Name</th>
+          <th class="border p-2">Email</th>
+          <th class="border p-2">Phone</th>
+          <th class="border p-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% contacts.forEach((contact, index) => { %>
+          <tr class="hover:bg-gray-50">
+            <td class="border p-2"><%= index + 1 %></td>
+            <td class="border p-2"><%= contact.firstName %></td>
+            <td class="border p-2"><%= contact.lastName %></td>
+            <td class="border p-2"><%= contact.email %></td>
+            <td class="border p-2"><%= contact.phone %></td>
+            <td class="border p-2 space-x-2 text-center">
+              <a href="/show-contant" title="View" class="text-blue-500 hover:underline">👁️</a>
+              <a href="/update-contact" title="Edit" class="text-yellow-500 hover:underline">✏️</a>
+              <a href="/delete-contact" title="Delete" class="text-red-500 hover:underline">🗑️</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Include Footer -->
+  <%- include('partials/footer') %>
+</body>
+</html>
