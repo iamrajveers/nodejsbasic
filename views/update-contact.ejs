@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Contact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<%- include('partials/header') %>
+
+<div class="max-w-2xl mx-auto mt-10">
+  <h2 class="text-xl font-bold mb-4">Update Contact</h2>
+
+  <% if (contact) { %>
+    <form action="/update-contact" method="POST">
+      <input type="hidden" name="id" value="<%= contact.id %>">
+      <div class="mb-4">
+        <label for="name" class="block">Name</label>
+        <input type="text" name="name" id="name" value="<%= contact.name %>" class="w-full p-2 border rounded" required>
+      </div>
+      <div class="mb-4">
+        <label for="phone" class="block">Phone</label>
+        <input type="text" name="phone" id="phone" value="<%= contact.phone %>" class="w-full p-2 border rounded" required>
+      </div>
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded">Update</button>
+    </form>
+  <% } else { %>
+    <p>Contact not found!</p>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>
